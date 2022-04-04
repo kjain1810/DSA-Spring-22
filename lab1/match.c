@@ -73,12 +73,12 @@ void printTournament(struct Match *match)
     printf("Match info incomplete!\n");
     return;
   }
-  
+
   if(match->winner != match->player1 && match->winner != match->player2)
   {
     printf("Player %d plays Player %d. Match info incorrect or incomplete!\n", match->player1, match->player2);
     return;
   }
-  
+
   printf("Player %d plays Player %d. Player %d wins\n", match->player1, match->player2, match->winner);
-  }
+}

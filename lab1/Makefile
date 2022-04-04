@@ -11,4 +11,4 @@ tournament.out: $(OBJ)
 
 clean:
 	rm *.o
-	rm tournament
+	rm *.out

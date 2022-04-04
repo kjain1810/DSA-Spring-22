@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "match.h"
 
 struct Match* createTournament(int depth, int* idx)
@@ -30,7 +31,7 @@ struct Match* createTournament(int depth, int* idx)
 
 int main()
 {
-  int* idx;
+  int* idx = (int *)malloc(sizeof(int));
   (*idx) = 1;
   struct Match* tournament = createTournament(5, idx);
   printTournament(tournament);
