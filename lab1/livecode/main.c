@@ -14,6 +14,22 @@ int makeMatch(struct Match *match)
   return 1;
 }
 
+struct Match *createTournament(int h)
+{
+  if(h == 0)
+    return (struct Match*)NULL;
+
+  struct Match* m1 =  createTournament(h - 1);
+  struct Match* m2 =  createTournament(h - 1);
+  struct Match* m = getMatch();
+
+  if ( assignPlayers(m, m1->winner, m2->winner, m1, m2) == 0)
+    printf("Error: assignPlayers failed\n");
+  if ( assignWinner(m, m->player1) == 0)
+    printf("Error: assignWinner failed\n");
+  return m;
+}
+
 int main()
 {
   struct Match* m1 = getMatch();
