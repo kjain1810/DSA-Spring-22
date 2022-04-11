@@ -33,7 +33,7 @@ int popQueue(struct Queue *queue)
 		perror("cannot pop elements from empty queue");
 		return -1;
 	}
-	int val = queue->tail->data;
+	int val = queue->head->data;
 	struct Node *head = queue->head;
 	if (queue->head == queue->tail)
 		queue->head = queue->tail = NULL;
@@ -61,6 +61,9 @@ int frontQueue(struct Queue *queue)
 struct Queue *initQueue()
 {
 	struct Queue *queue = (struct Queue *)malloc(sizeof(struct Queue));
+	queue->head = NULL;
+	queue->tail = NULL;
+	return queue;
 }
 
 void emptyQueue(struct Queue *queue)

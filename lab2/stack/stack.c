@@ -61,6 +61,9 @@ int topStack(struct Stack *stack)
 struct Stack *initStack()
 {
 	struct Stack *stack = (struct Stack *)malloc(sizeof(struct Stack));
+	stack->head = NULL;
+	stack->tail = NULL;
+	return stack;
 }
 
 void emptyStack(struct Stack *stack)
