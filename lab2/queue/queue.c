@@ -63,6 +63,7 @@ struct Queue *initQueue()
 	struct Queue *queue = (struct Queue *)malloc(sizeof(struct Queue));
 	queue->head = NULL;
 	queue->tail = NULL;
+	queue->size = 0;
 	return queue;
 }
 

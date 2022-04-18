@@ -63,6 +63,7 @@ struct Stack *initStack()
 	struct Stack *stack = (struct Stack *)malloc(sizeof(struct Stack));
 	stack->head = NULL;
 	stack->tail = NULL;
+	stack->size = 0;
 	return stack;
 }
 
