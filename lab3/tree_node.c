@@ -5,7 +5,7 @@
 struct TreeNode *initTreeNode()
 {
 	struct TreeNode *tree_node = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-	tree_node->data = createDataInstance(0);
+	tree_node->data = createDataInstance(0, 0, (int)1e9, -1);
 	tree_node->left = tree_node->right = NULL;
 	return tree_node;
 }

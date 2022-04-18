@@ -16,13 +16,14 @@ int main()
 	for (int i = 0; i < n; ++i)
 		scanf("%d", &arr[i]);
 	tree *my_tree = generateTree(n, arr);
+	// printf("here\n");
 
-	printInorderTraversalRecursive(my_tree);
+	// printInorderTraversalRecursive(my_tree);
 	// printInorderTraversalIterative(my_tree);
 	// printPostorderTraversalRecursive(my_tree);
 	// printPostorderTraversalIterative(my_tree);
 
-	// printf("%d\n", getHeightTree(my_tree));
+	printf("%d\n", getHeightTree(my_tree));
 
 	// if (isBinarySearchTree(my_tree))
 	// 	printf("It is a BST\n");
