@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tree_data.h"
-#include "tree_node.h"
-#include "tree.h"
+#include "btree_data.h"
+#include "btree_node.h"
+#include "btree.h"
 
-typedef struct TreeData treeData;
-typedef struct TreeNode treeNode;
-typedef struct Tree tree;
+typedef struct BTreeData btreeData;
+typedef struct BTreeNode btreeNode;
+typedef struct BTree btree;
 
 int main()
 {
@@ -15,21 +15,21 @@ int main()
 	int arr[n];
 	for (int i = 0; i < n; ++i)
 		scanf("%d", &arr[i]);
-	tree *my_tree = generateTree(n, arr);
+	btree *my_btree = generateBTree(n, arr);
 	// printf("here\n");
 
-	// printInorderTraversalRecursive(my_tree);
-	// printInorderTraversalIterative(my_tree);
-	// printPostorderTraversalRecursive(my_tree);
-	// printPostorderTraversalIterative(my_tree);
+	// printInorderTraversalRecursive(my_btree);
+	// printInorderTraversalIterative(my_btree);
+	// printPostorderTraversalRecursive(my_btree);
+	// printPostorderTraversalIterative(my_btree);
 
-	printf("%d\n", getHeightTree(my_tree));
+	printf("%d\n", getHeightBTree(my_btree));
 
-	// if (isBinarySearchTree(my_tree))
+	// if (isBinarySearchTree(my_btree))
 	// 	printf("It is a BST\n");
 	// else
 	// 	printf("It is not a BST\n");
 
-	deleteTree(my_tree);
+	deleteBTree(my_btree);
 	return 0;
 }

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tree_data.h"
-#include "tree_node.h"
-#include "tree.h"
+#include "btree_data.h"
+#include "btree_node.h"
+#include "btree.h"
 
 int min(int a, int b)
 {
@@ -18,20 +18,20 @@ int max(int a, int b)
 	return b;
 }
 
-struct Tree *initTree()
+struct BTree *initBTree()
 {
-	struct Tree *tree = (struct Tree *)malloc(sizeof(struct Tree));
-	tree->root = NULL;
-	return tree;
+	struct BTree *btree = (struct BTree *)malloc(sizeof(struct BTree));
+	btree->root = NULL;
+	return btree;
 }
 
-struct Tree *generateTree(int n, int arr[]) // Use as Blackbox
+struct BTree *generateBTree(int n, int arr[]) // Use as Blackbox
 {
-	struct Tree *tree = initTree();
-	struct TreeNode *queue[n + 10];
-	tree->root = initTreeNode();
-	tree->root->data->data = arr[0];
-	queue[0] = tree->root;
+	struct BTree *btree = initBTree();
+	struct BTreeNode *queue[n + 10];
+	btree->root = initBTreeNode();
+	btree->root->data->data = arr[0];
+	queue[0] = btree->root;
 	int pos = 0, f = 0, b = 1;
 	while (pos < n)
 	{
@@ -41,25 +41,25 @@ struct Tree *generateTree(int n, int arr[]) // Use as Blackbox
 			++pos;
 			continue;
 		}
-		struct TreeNode *node = queue[f++];
+		struct BTreeNode *node = queue[f++];
 		if (pos * 2 + 1 < n && arr[pos * 2 + 1] >= 0)
 		{
-			node->left = initTreeNode();
+			node->left = initBTreeNode();
 			node->left->data->data = arr[pos * 2 + 1];
 			queue[b++] = node->left;
 		}
 		if (pos * 2 + 2 < n && arr[pos * 2 + 2] >= 0)
 		{
-			node->right = initTreeNode();
+			node->right = initBTreeNode();
 			node->right->data->data = arr[pos * 2 + 2];
 			queue[b++] = node->right;
 		}
 		++pos;
 	}
-	return tree;
+	return btree;
 }
 
-void _printInorderTraversalRecursive(struct TreeNode *node)
+void _printInorderTraversalRecursive(struct BTreeNode *node)
 {
 	if (node->left != NULL)
 		_printInorderTraversalRecursive(node->left);
@@ -68,13 +68,13 @@ void _printInorderTraversalRecursive(struct TreeNode *node)
 		_printInorderTraversalRecursive(node->right);
 }
 
-void printInorderTraversalRecursive(struct Tree *tree)
+void printInorderTraversalRecursive(struct BTree *btree)
 {
-	_printInorderTraversalRecursive(tree->root);
+	_printInorderTraversalRecursive(btree->root);
 	printf("\n");
 }
 
-void _printPostorderTraversalRecursive(struct TreeNode *node)
+void _printPostorderTraversalRecursive(struct BTreeNode *node)
 {
 	if (node->left != NULL)
 		_printPostorderTraversalRecursive(node->left);
@@ -83,17 +83,17 @@ void _printPostorderTraversalRecursive(struct TreeNode *node)
 	printf("%d ", node->data->data);
 }
 
-void printPostorderTraversalRecursive(struct Tree *tree)
+void printPostorderTraversalRecursive(struct BTree *btree)
 {
-	_printPostorderTraversalRecursive(tree->root);
+	_printPostorderTraversalRecursive(btree->root);
 	printf("\n");
 }
 
-void printInorderTraversalIterative(struct Tree *tree)
+void printInorderTraversalIterative(struct BTree *btree)
 {
-	struct TreeNode *stack[1000];
+	struct BTreeNode *stack[1000];
 	int top = 0;
-	struct TreeNode *node = tree->root;
+	struct BTreeNode *node = btree->root;
 	while (top > 0 || node != NULL)
 	{
 		while (node != NULL)
@@ -107,11 +107,11 @@ void printInorderTraversalIterative(struct Tree *tree)
 	}
 }
 
-void printPostorderTraversalIterative(struct Tree *tree)
+void printPostorderTraversalIterative(struct BTree *btree)
 {
-	// struct TreeNode *stack[1000];
+	// struct BTreeNode *stack[1000];
 	// int top = 0;
-	// struct TreeNode *node = tree->root;
+	// struct BTreeNode *node = btree->root;
 	// while (top > 0 || node != NULL)
 	// {
 	// 	while (node != NULL)
@@ -125,7 +125,7 @@ void printPostorderTraversalIterative(struct Tree *tree)
 	// }
 }
 
-int _isBinarySearchTree(struct TreeNode *node)
+int _isBinarySearchTree(struct BTreeNode *node)
 {
 	int flag = 1;
 	if (node->left != NULL)
@@ -158,39 +158,39 @@ int _isBinarySearchTree(struct TreeNode *node)
 	return flag;
 }
 
-int isBinarySearchTree(struct Tree *tree)
+int isBinarySearchTree(struct BTree *btree)
 {
-	return _isBinarySearchTree(tree->root);
+	return _isBinarySearchTree(btree->root);
 }
 
-int _getHeightTree(struct TreeNode *node, int height)
+int _getHeightBTree(struct BTreeNode *node, int height)
 {
 	int ans = 0;
 	if (node->left != NULL)
-		ans = max(ans, _getHeightTree(node->left, height + 1));
+		ans = max(ans, _getHeightBTree(node->left, height + 1));
 	if (node->right != NULL)
-		ans = max(ans, _getHeightTree(node->right, height + 1));
+		ans = max(ans, _getHeightBTree(node->right, height + 1));
 	if (node->left == NULL && node->right == NULL)
 		return height;
 	return ans;
 }
 
-int getHeightTree(struct Tree *tree)
+int getHeightBTree(struct BTree *btree)
 {
-	return _getHeightTree(tree->root, 1);
+	return _getHeightBTree(btree->root, 1);
 }
 
-void _deleteTree(struct TreeNode *node)
+void _deleteBTree(struct BTreeNode *node)
 {
 	if (node->left != NULL)
-		_deleteTree(node->left);
+		_deleteBTree(node->left);
 	if (node->right != NULL)
-		_deleteTree(node->right);
-	deleteTreeNode(node);
+		_deleteBTree(node->right);
+	deleteBTreeNode(node);
 }
 
-void deleteTree(struct Tree *tree)
+void deleteBTree(struct BTree *btree)
 {
-	_deleteTree(tree->root);
-	free(tree);
+	_deleteBTree(btree->root);
+	free(btree);
 }
