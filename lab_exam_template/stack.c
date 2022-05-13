@@ -10,7 +10,7 @@ struct StackNode* getStackNode(int data)
   return ret;
 }
 
-int push(struct Stack *stack, struct StackNode* node)
+int pushStack(struct Stack *stack, struct StackNode* node)
 {
   if(stack == NULL)
     return 0;
@@ -22,7 +22,7 @@ int push(struct Stack *stack, struct StackNode* node)
   return 1;
 }
 
-int pop(struct Stack* stack)
+int popStack(struct Stack* stack)
 {
   if(stack == NULL)
     return 0;
@@ -35,9 +35,16 @@ int pop(struct Stack* stack)
   return 1;
 }
 
-struct StackNode* top(struct Stack* stack)
+struct StackNode* topStack(struct Stack* stack)
 {
   if(stack == NULL)
     return NULL;
   return stack->top;
+}
+
+int isStackEmpty(struct Stack *stack)
+{
+  if(stack->size == 0)
+    return 1;
+  return 0;
 }

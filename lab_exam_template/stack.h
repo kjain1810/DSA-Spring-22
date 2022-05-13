@@ -12,8 +12,9 @@ struct Stack {
 };
 
 struct StackNode* getStackNode(int data);
-int push(struct Stack *stack, struct StackNode* node);
-int pop(struct Stack *stack);
-struct StackNode* top(struct Stack* stack);
+int pushStack(struct Stack *stack, struct StackNode* node);
+int popStack(struct Stack *stack);
+struct StackNode* topStack(struct Stack* stack);
+int isStackEmpty(struct Stack* stack);
 
 #endif
