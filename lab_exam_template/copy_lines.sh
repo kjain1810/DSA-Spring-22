@@ -57,7 +57,9 @@ else
   exit 2
 fi
 
-awk 'NR == FNR { if(FNR >= $start_line && FNR <= $end_line) { patch = patch $0 ORS }; next } FNR == $target_line { $0 = patch $0 } 1' $source_file $target_file
+sed -n $(echo $start_line),$(echo $end_line)p $source_file>patch
+sed -i $(echo $target_line)rpatch $target_file
+rm patch
 
 echo "Done"
 
