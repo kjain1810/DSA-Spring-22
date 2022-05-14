@@ -3,22 +3,19 @@
 
 typedef struct Deque_Node {
   int val;
-  struct Deque_Node *next;
-  struct Deque_Node *prev;
+  struct Deque_Node *next, *prev;
 } Deque_Node;
 
 typedef struct Deque {
   int size;
-  Deque_Node *back;
-  Deque_Node *front;
+  Deque_Node *back, *front;
 } Deque;
 
 // Initalize and return pointer to a deque node
 Deque_Node *Deque_Node_init(int val) {
   Deque_Node *n = malloc(sizeof(Deque_Node));
   n->val = val;
-  n->next = NULL;
-  n->prev = NULL;
+  n->next = n->prev = NULL;
   return n;
 }
 
@@ -26,33 +23,12 @@ Deque_Node *Deque_Node_init(int val) {
 Deque *Deque_init() {
   Deque *d = malloc(sizeof(Deque));
   d->size = 0;
-  d->front = NULL;
-  d->back = NULL;
+  d->front = d->back = NULL;
   return d;
 }
 
 // Return size of Deque
 int Deque_size(Deque *d) { return d->size; }
-
-// Print elements in Deque in FIFO order, i.e, queue
-void Deque_FIFO(Deque *d) {
-  Deque_Node *curr = d->front;
-  while (curr != NULL) {
-    printf("%d ", curr->val);
-    curr = curr->next;
-  }
-  printf("\n");
-}
-
-// Print elements in Deque in FILO order, i.e, stack
-void Deque_FILO(Deque *d) {
-  Deque_Node *curr = d->back;
-  while (curr != NULL) {
-    printf("%d ", curr->val);
-    curr = curr->prev;
-  }
-  printf("\n");
-}
 
 // 1 if deque is empty, 0 otherwise
 int Deque_empty(Deque *d) { return d->size == 0; }
@@ -67,8 +43,7 @@ int Deque_back(Deque *d) { return d->back->val;}
 void Deque_push_back(Deque *d, int val) {
    Deque_Node *n = Deque_Node_init(val);
    if (d->front == NULL) {
-      d->front = n;
-      d->back = n;
+      d->front = d->back = n;
    } else {
      d->back->next = n;
      n->prev = d->back;
@@ -81,8 +56,7 @@ void Deque_push_back(Deque *d, int val) {
 void Deque_push_front(Deque *d, int val) {
   Deque_Node *n = Deque_Node_init(val);
   if (d->front == NULL) {
-    d->front = n;
-    d->back = n;
+    d->front = d->back = n;
   } else {
     d->front->prev = n;
     n->next = d->front;
@@ -95,8 +69,7 @@ void Deque_push_front(Deque *d, int val) {
 void Deque_pop_back(Deque *d) {
   if (d->front == d->back) {
     free(d->front);
-    d->front = NULL;
-    d->back = NULL;
+    d->front = d->back = NULL;
   } else {
     Deque_Node *new_back = d->back->prev;
     free(d->back);
@@ -109,8 +82,7 @@ void Deque_pop_back(Deque *d) {
 // Removes element from the front of the deque
 void Deque_pop_front(Deque *d) {
   if (d->front == d->back) {
-    d->front = NULL;
-    d->back = NULL;
+    d->front = d->back = NULL;
   } else {
     Deque_Node *new_front = d->front->next;
     free(d->front);
