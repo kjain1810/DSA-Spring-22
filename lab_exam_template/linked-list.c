@@ -7,12 +7,13 @@ typedef struct LL_Node {
 } LL_Node;
 
 typedef struct LL {
+	int size;
 	LL_Node *head;
 } LL;
 
 // Initalize and return a pointer to a linked list node
 LL_Node *LL_Node_init(int val) {
-	LL_Node *n = malloc(sizeof(LL_Node));
+LL_Node *n = malloc(sizeof(LL_Node));
 	n->val = val;
 	n->next = NULL;
 	return n;
@@ -22,7 +23,13 @@ LL_Node *LL_Node_init(int val) {
 LL *LL_init() {
 	LL *l = malloc(sizeof(LL));
 	l->head = NULL;
+	l->size = 0;
 	return l;
+}
+
+// Returns size of a linked list
+int LL_Size(LL *l) {
+	return l->size;
 }
 
 // Add a value to a linked list
@@ -37,6 +44,7 @@ void LL_add(LL *l, int val) {
 		}
 		curr->next = n;
 	}
+	l->size += 1;
 }
 
 // Search for a value in a linked list
@@ -68,6 +76,7 @@ int LL_delete(LL *l, int val) {
 				}
 			}
 			free(curr);
+			l->size -= 1;
 			return 1;
 		}
 		prev = curr;
@@ -76,6 +85,7 @@ int LL_delete(LL *l, int val) {
 	return 0;
 }
 
+// Prints a linked list
 void LL_print(LL *l) {
 	LL_Node *curr = l->head;
 	while (curr != NULL) {
@@ -83,25 +93,4 @@ void LL_print(LL *l) {
 		curr = curr->next;
 	}
 	printf("\n");
-}
-
-int main() {
-	LL *l = LL_init();
-	LL_print(l);
-	LL_add(l, 1);
-	LL_print(l);
-	LL_delete(l, 1);
-	LL_print(l);
-	LL_add(l, 1);
-	LL_print(l);
-	LL_add(l, 2);
-	LL_print(l);
-	LL_add(l, 3);
-	LL_print(l);
-	LL_add(l, 4);
-	LL_print(l);
-	LL_delete(l, 1);
-	LL_print(l);
-	LL_delete(l, 3);
-	LL_print(l);
 }
