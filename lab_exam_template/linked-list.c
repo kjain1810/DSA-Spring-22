@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef float DataType;
+
 typedef struct LL_Node {
-	int val;
+	DataType val;
 	struct LL_Node *next;
 } LL_Node;
 
@@ -12,7 +14,7 @@ typedef struct LL {
 } LL;
 
 // Initalize and return a pointer to a linked list node
-LL_Node *LL_Node_init(int val) {
+LL_Node *LL_Node_init(DataType val) {
 LL_Node *n = malloc(sizeof(LL_Node));
 	n->val = val;
 	n->next = NULL;
@@ -42,7 +44,7 @@ int LL_Size(LL *l) {
 // This means that the node at position p will have value = val
 // after this operation
 // p can range from [0, size]
-void LL_add(LL *l, int p, int val) {
+void LL_add(LL *l, int p, DataType val) {
   int i = 0;
   LL_Node *curr = l->head;
   LL_Node *prev = NULL;
@@ -64,7 +66,7 @@ void LL_add(LL *l, int p, int val) {
 
 // Search for a value in a linked list
 // Returns 1 if found, 0 if not found
-int LL_search(LL *l, int val) {
+int LL_search(LL *l, DataType val) {
 	LL_Node *curr = l->head;
 	while (curr != NULL) {
 		if (curr->val == val) {
@@ -76,7 +78,7 @@ int LL_search(LL *l, int val) {
 }
 
 // Deletes the first value = val from the linked list
-void LL_delete(LL *l, int val) {
+void LL_delete(LL *l, DataType val) {
 	LL_Node *curr = l->head;
 	LL_Node *prev = NULL;
 	while (curr != NULL) {
@@ -107,4 +109,9 @@ void LL_print(LL *l) {
 		curr = curr->next;
 	}
 	printf("\n");
+}
+
+int main()
+{
+  return 0;
 }

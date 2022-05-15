@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef float DataType;
+
 typedef struct Deque_Node {
-  int val;
+  DataType val;
   struct Deque_Node *next, *prev;
 } Deque_Node;
 
@@ -12,7 +14,7 @@ typedef struct Deque {
 } Deque;
 
 // Initalize and return pointer to a deque node
-Deque_Node *Deque_Node_init(int val) {
+Deque_Node *Deque_Node_init(DataType val) {
   Deque_Node *n = malloc(sizeof(Deque_Node));
   n->val = val;
   n->next = n->prev = NULL;
@@ -34,13 +36,13 @@ int Deque_size(Deque *d) { return d->size; }
 int Deque_empty(Deque *d) { return d->size == 0; }
 
 // Returns the element at the front of the deque
-int Deque_front(Deque *d) { return d->front->val; }
+DataType Deque_front(Deque *d) { return d->front->val; }
 
 // Returns the element at the back of the deque
-int Deque_back(Deque *d) { return d->back->val;}
+DataType Deque_back(Deque *d) { return d->back->val;}
 
 // Adds an element at the back of the deque
-void Deque_push_back(Deque *d, int val) {
+void Deque_push_back(Deque *d, DataType val) {
    Deque_Node *n = Deque_Node_init(val);
    if (d->front == NULL) {
       d->front = d->back = n;
@@ -53,7 +55,7 @@ void Deque_push_back(Deque *d, int val) {
 }
 
 // Adds an element at the front of the deque
-void Deque_push_front(Deque *d, int val) {
+void Deque_push_front(Deque *d, DataType val) {
   Deque_Node *n = Deque_Node_init(val);
   if (d->front == NULL) {
     d->front = d->back = n;
@@ -90,4 +92,9 @@ void Deque_pop_front(Deque *d) {
     d->front->prev = NULL;
   }
   d->size -= 1;
+}
+
+int main()
+{
+  return 0;
 }

@@ -1,8 +1,10 @@
 #include <stdlib.h>
 
+typedef int DataType;
+
 struct DataItem
 {
-	int data; // You can add or delete data types
+	DataType data; // You can add or delete data types
 	long long key;
 };
 
@@ -63,7 +65,7 @@ struct DataItem *search(struct HashTable *table, long long key)
 	return NULL;
 }
 
-void insert(struct HashTable *table, long long key, int data)
+void insert(struct HashTable *table, long long key, DataType data)
 {
 
 	struct DataItem *item = (struct DataItem *)malloc(sizeof(struct DataItem));
@@ -115,4 +117,9 @@ struct DataItem *delete (struct HashTable *table, struct DataItem *item)
 	}
 
 	return NULL;
+}
+
+int main()
+{
+  return 0;
 }

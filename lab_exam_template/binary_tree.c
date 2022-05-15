@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef float DataType;
+
 typedef struct BT_Node {
-  int val;
+  DataType val;
   struct BT_Node *left, *right;
 } BT_Node;
 
@@ -11,7 +13,7 @@ typedef struct BT {
 } BT;
 
 // Initalize a binary tree node and return a pointer to it
-BT_Node *BT_Node_init(int val) {
+BT_Node *BT_Node_init(DataType val) {
   BT_Node *n = malloc(sizeof(BT_Node));
   n->val = val;
   n->left = n->right = NULL;
