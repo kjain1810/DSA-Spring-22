@@ -101,16 +101,6 @@ void LL_delete(LL *l, DataType val) {
 	}
 }
 
-// Prints a linked list
-void LL_print(LL *l) {
-	LL_Node *curr = l->head;
-	while (curr != NULL) {
-		printf("%d ", curr->val);
-		curr = curr->next;
-	}
-	printf("\n");
-}
-
 int main()
 {
   return 0;
