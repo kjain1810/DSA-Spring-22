@@ -24,7 +24,7 @@ BT_Node *BT_Node_init(DataType val) {
 // arr is n x 3, where for the ith node
 // arr[i][0] is parent, arr[i][1] is left/right, arr[i][2] is value
 BT *create_BT(int **arr, int n) {
-  BT *b;
+  BT *b = (BT*) malloc(sizeof(BT));
   BT_Node *nodes[n];
   for (int i = 0; i < n; ++i) {
     nodes[i] = BT_Node_init(arr[i][2]);
