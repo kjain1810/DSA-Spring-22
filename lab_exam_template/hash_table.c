@@ -113,3 +113,8 @@ void delete (struct HashTable *table, long long key)
 		hashIndex %= table->size;
 	}
 }
+
+int main()
+{
+  return 0;
+}

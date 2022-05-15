@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef float DataType;
+
 typedef struct BT_Node {
-  int val;
+  DataType val;
   struct BT_Node *left, *right;
 } BT_Node;
 
@@ -11,7 +13,7 @@ typedef struct BT {
 } BT;
 
 // Initalize a binary tree node and return a pointer to it
-BT_Node *BT_Node_init(int val) {
+BT_Node *BT_Node_init(DataType val) {
   BT_Node *n = malloc(sizeof(BT_Node));
   n->val = val;
   n->left = n->right = NULL;
@@ -21,15 +23,15 @@ BT_Node *BT_Node_init(int val) {
 // Create a binary tree and return it
 // arr is n x 3, where for the ith node
 // arr[i][0] is parent, arr[i][1] is left/right, arr[i][2] is value
-BT create_BT(int **arr, int n) {
-  BT b;
+BT *create_BT(int **arr, int n) {
+  BT *b = (BT*) malloc(sizeof(BT));
   BT_Node *nodes[n];
   for (int i = 0; i < n; ++i) {
     nodes[i] = BT_Node_init(arr[i][2]);
   }
   for (int i = 0; i < n; ++i) {
     if (arr[i][0] == -1) {
-      b.root = nodes[i];
+      b->root = nodes[i];
     } else {
       if (arr[i][1] == 0) {
         nodes[arr[i][0]]->left = nodes[i];
@@ -39,6 +41,15 @@ BT create_BT(int **arr, int n) {
     }
   }
   return b;
+}
+
+void delete_BT(BT_Node *curr) {
+  if (curr == NULL) {
+    return ;
+  }
+  delete_BT(curr->left);
+  delete_BT(curr->right);
+  free(curr);
 }
 
 // Taking input in specified format and creating a binary tree
@@ -57,5 +68,7 @@ int main() {
     arr[i][1] = c;
     arr[i][2] = val;
   }
-  BT b = create_BT(arr, n);
+  BT *b = create_BT(arr, n);
+  delete_BT(b->root);
+  free(b);
 }
