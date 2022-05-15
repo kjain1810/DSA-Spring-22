@@ -1,8 +1,10 @@
 #include <stdlib.h>
 
+typedef int DataType;
+
 struct DataItem
 {
-	int data; // You can add or delete data types
+	DataType data; // You can add or delete data types
 	long long key;
 };
 
@@ -63,7 +65,7 @@ struct DataItem *search(struct HashTable *table, long long key)
 	return NULL;
 }
 
-void insert(struct HashTable *table, long long key, int data)
+void insert(struct HashTable *table, long long key, DataType data)
 {
 
 	struct DataItem *item = (struct DataItem *)malloc(sizeof(struct DataItem));
@@ -86,10 +88,8 @@ void insert(struct HashTable *table, long long key, int data)
 	table->hashArray[hashIndex] = item;
 }
 
-struct DataItem *delete (struct HashTable *table, struct DataItem *item)
+void delete (struct HashTable *table, long long key)
 {
-	long long key = item->key;
-
 	// get the hash
 	int hashIndex = hashCode(table, key);
 
@@ -99,12 +99,11 @@ struct DataItem *delete (struct HashTable *table, struct DataItem *item)
 
 		if (table->hashArray[hashIndex]->key == key)
 		{
-			struct DataItem *temp = table->hashArray[hashIndex];
 
 			// deletes the data at deleted position
 			free(table->hashArray[hashIndex]);
 			table->hashArray[hashIndex] = NULL;
-			return temp;
+			return;
 		}
 
 		// go to next cell
@@ -113,6 +112,4 @@ struct DataItem *delete (struct HashTable *table, struct DataItem *item)
 		// wrap around the table
 		hashIndex %= table->size;
 	}
-
-	return NULL;
 }
