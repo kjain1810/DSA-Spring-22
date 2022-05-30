@@ -76,7 +76,7 @@ void insert(struct HashTable *table, long long key, DataType data)
 	int hashIndex = hashCode(table, key);
 
 	// move in array until an empty or deleted cell
-	while (table->hashArray[hashIndex] != NULL)
+	while (table->hashArray[hashIndex] != NULL && table->hashArray[hashIndex]->key != -1)
 	{
 		// go to next cell
 		++hashIndex;
@@ -88,10 +88,8 @@ void insert(struct HashTable *table, long long key, DataType data)
 	table->hashArray[hashIndex] = item;
 }
 
-struct DataItem *delete (struct HashTable *table, struct DataItem *item)
+void delete (struct HashTable *table, long long key, DataType dummy_data)
 {
-	long long key = item->key;
-
 	// get the hash
 	int hashIndex = hashCode(table, key);
 
@@ -101,12 +99,10 @@ struct DataItem *delete (struct HashTable *table, struct DataItem *item)
 
 		if (table->hashArray[hashIndex]->key == key)
 		{
-			struct DataItem *temp = table->hashArray[hashIndex];
-
 			// deletes the data at deleted position
-			free(table->hashArray[hashIndex]);
-			table->hashArray[hashIndex] = NULL;
-			return temp;
+			table->hashArray[hashIndex]->key = -1;
+			table->hashArray[hashIndex]->data = dummy_data;
+			return;
 		}
 
 		// go to next cell
@@ -115,11 +111,4 @@ struct DataItem *delete (struct HashTable *table, struct DataItem *item)
 		// wrap around the table
 		hashIndex %= table->size;
 	}
-
-	return NULL;
-}
-
-int main()
-{
-  return 0;
 }
