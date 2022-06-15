@@ -1,0 +1,28 @@
+Song S1 with artist A1 and duration 1.100000 created
+Song S2 with artist A2 and duration 2.200000 created
+Song S3 with artist A3 and duration 3.300000 created
+Song S4 with artist A4 and duration 4.400000 created
+Song S5 with artist A5 and duration 5.500000 created
+User U1 created successfully
+Song S1 liked by user U1
+Song S2 liked by user U1
+Song S3 liked by user U1
+Song S4 liked by user U1
+Song S5 liked by user U1
+User U2 created successfully
+Song S1 liked by user U2
+Song S2 liked by user U2
+Song S3 liked by user U2
+Song S4 liked by user U2
+Song S5 liked by user U2
+User compatibility is: 5
+Song S1 unliked by user U2
+User compatibility is: 4
+Song S2 unliked by user U2
+User compatibility is: 3
+Song S3 unliked by user U2
+User compatibility is: 2
+Song S4 unliked by user U2
+User compatibility is: 1
+Song S5 unliked by user U2
+User compatibility is: 0

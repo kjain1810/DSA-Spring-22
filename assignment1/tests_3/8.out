@@ -1,0 +1,22 @@
+[0;32mSong S1 with artist A1 and duration 1.100000 created
+Song S2 with artist A2 and duration 2.200000 created
+Song S3 with artist A3 and duration 3.300000 created
+Song S4 with artist A4 and duration 4.400000 created
+Song S1 added successfully
+Song S4 added successfully
+Song S2 added successfully
+Song S3 added successfully
+Song S4 added successfully
+Song at index 0 removed successfully
+Song at index 0 removed successfully
+Song at index 1 removed successfully
+Song at index 0 removed successfully
+Song at index 0 removed successfully
+Song at index 0 couldn't be removed
+Song S1 added successfully
+Song S2 added successfully
+Song S3 added successfully
+Song at index 0 removed successfully
+Song at index 1 removed successfully
+Playing song
+Song S2 is playing right now

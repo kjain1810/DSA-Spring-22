@@ -1,0 +1,28 @@
+Song S1 with artist A1 and duration 1.100000 created
+Song S2 with artist A2 and duration 2.200000 created
+Song S3 with artist A3 and duration 3.300000 created
+User U1 created successfully
+User U2 created successfully
+Song S1 added to queue of user U1
+Song S3 added to queue of user U1
+Song S1 added to queue of user U2
+Playing song
+Song S1 is playing
+User compatibility is: 0
+Song S3 added to queue of user U1
+Song S2 added to queue of user U1
+Song removed successfully
+Playing song
+Song S3 is playing
+Playing song
+Song S2 is playing
+Song S1 liked by user U1
+Song S3 liked by user U1
+Song S2 liked by user U1
+Song S1 liked by user U2
+User compatibility is: 1
+Song S1 unliked by user U1
+User compatibility is: 0
+Song S3 liked by user U2
+User compatibility is: 1
+Invalid command
