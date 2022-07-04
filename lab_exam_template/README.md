@@ -8,6 +8,8 @@ The following code will be provided to the students to use in the lab exams.
 3. deque.c : Implementation of a double ended queue ADT
 4. linked-list.c : Implementation of a linked list ADT
 5. hash-table.c : Implementation of a hash table ADT without the hashing function
+6. mergesort.c : Implementation of a mergesort with generic element type of array, and custom comparator function in C.
+7. mergesort.cpp : Implementation of a mergesort with generic element type of array, and custom comparator function in CPP.
 
 ### Copy lines
 Usage:
@@ -18,13 +20,3 @@ sh ./copy_lines.sh <source_file> <start_line> <end_line> <target_file> <target_l
 This command copies lines number between `start_line` and `end_line` in `source_file` to `target_file` starting from line number `target_line`.
 
 Might be useful during the exam :)
-
-### Binary Tree ADT
-
-### Deque ADT
-
-### Linked list ADT
-
-### Hash Table ADT
-
-
